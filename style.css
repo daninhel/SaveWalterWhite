@@ -8,48 +8,128 @@
     padding: 0;
 }
 
-body{
-    font-family: var(--font);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url("https://github.com/21jujubees/SaveWalterWhite/blob/main/img/tile.png?raw=true");
+@media (max-width: 800px) {
+    body{
+        font-family: var(--font);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url("https://github.com/21jujubees/SaveWalterWhite/blob/main/img/tile.png?raw=true");
+    }
+
+    img{
+        width: 35%;
+        height: 35%;
+    }
+
+    .collums-pics{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .rows-pics{
+        display: flex;
+        flex-direction: row;
+        padding: 1.5em 0;
+        gap: 1rem;
+    }
+
+    h1{
+        font-family: var(--tittle-font);
+        font-size: 3.2rem;
+        color: white;
+        padding: 2rem 0 0 0;
+    }
+
+    h2{
+        font-size: 1.2rem;
+        padding: 0 0 0.4rem 0;
+        color: yellow;
+    }
+
+    .first-txtbox{
+        color: yellow;
+        font-size: 1.18rem;
+        padding: 0.5rem 2.3rem;
+    }
+
+    .second-txtbox{
+        color: white;
+        font-size: 1rem;
+        padding: 0.5rem 2.3rem;
+    }
+
+    .banner{
+        padding: 0.8rem 0;
+        width: 80%;
+    }
+
+    .donate-btn{
+        width: 40%;
+    }
 }
 
-h1{
-    font-family: var(--tittle-font);
-    font-size: 6rem;
-    color: white;
-    padding: 2rem 0 0 0;
-}
+@media (min-width: 800px) {
+    body{
+        font-family: var(--font);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url("https://github.com/21jujubees/SaveWalterWhite/blob/main/img/tile.png?raw=true");
+    }
+    
+    .collums-pics{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .rows-pics{
+        display: flex;
+        flex-direction: row;
+        padding: 1.5em 0;
+        gap: 4rem;
+    }
 
-h2{
-    font-size: 2rem;
-    padding: 0 0 0.4rem 0;
-    color: yellow;
+    h1{
+        font-family: var(--tittle-font);
+        font-size: 6rem;
+        color: white;
+        padding: 2rem 0 0 0;
+    }
 
-}
+    h2{
+        font-size: 2rem;
+        padding: 0 0 0.4rem 0;
+        color: yellow;
+    }
 
-p{
-    color: white;
-    padding: 0.5em 12rem;
-}
+    p{
+        padding: 0.5rem 0;
+    }
 
-.collums-pics{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    .first-txtbox{
+        color: yellow;
+        font-size: 1.7rem;
+        padding: 0.5rem 12rem;
+    }
 
-.rows-pics{
-    display: flex;
-    flex-direction: row;
-    padding: 1.5em 0;
-    gap: 4rem;
+    .second-txtbox{
+        color: white;
+        font-size: 1.3rem;
+        padding: 0.5rem 12rem;
+    }
 }
 
 .visitors{
     background-color: black;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
