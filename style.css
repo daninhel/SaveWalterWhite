@@ -1,0 +1,55 @@
+:root{
+    --font : 'Comic Sans MS';
+    --tittle-font : 'Times New Roman';
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: var(--font);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://github.com/21jujubees/SaveWalterWhite/blob/main/img/tile.png?raw=true");
+}
+
+h1{
+    font-family: var(--tittle-font);
+    font-size: 6rem;
+    color: white;
+    padding: 2rem 0 0 0;
+}
+
+h2{
+    font-size: 2rem;
+    padding: 0 0 0.4rem 0;
+    color: yellow;
+
+}
+
+p{
+    color: white;
+    padding: 0.5em 12rem;
+}
+
+.collums-pics{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rows-pics{
+    display: flex;
+    flex-direction: row;
+    padding: 1.5em 0;
+    gap: 4rem;
+}
+
+.visitors{
+    background-color: black;
+}
