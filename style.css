@@ -109,7 +109,7 @@
         color: yellow;
     }
 
-    p{
+    .body-text{
         padding: 0.5rem 0;
     }
 
@@ -126,9 +126,40 @@
     }
 }
 
+h3{
+    color: rgb(251, 251, 82);
+    font-size: 2rem;
+    padding: 0.9rem 12rem;
+    text-align: center;
+    word-wrap: normal;
+}
+
+.footer-div{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+footer{
+    margin: 1rem;
+    color: white;
+    gap: 0.5rem;
+}
+
+.banner{
+    margin: 1.4rem;
+}
+
+.donate-btn{
+    margin: 1.4rem;
+}
+
 .visitors{
     background-color: black;
+    margin: 1rem 0 0 0;
     width: 65%;
+    height: 11rem;
     display: flex;
     flex-direction: column;
     align-items: center;
