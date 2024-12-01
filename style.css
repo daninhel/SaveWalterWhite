@@ -1,6 +1,7 @@
 :root{
     --font : 'Comic Sans MS';
     --tittle-font : 'Times New Roman';
+    --background : url("./img/background.webp")
 }
 
 *{
@@ -13,14 +14,53 @@
         font-family: var(--font);
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        background-image: url("https://github.com/21jujubees/SaveWalterWhite/blob/main/img/tile.png?raw=true");
+        background-image:var(--background);
+        background-size: auto;
+    }
+    
+    img{
+        width: 40%;
+        height: 40%;
     }
 
-    img{
-        width: 35%;
-        height: 35%;
+    h1{
+        font-family: var(--tittle-font);
+        font-size: 3.5rem;
+        color: white;
+        padding: 2rem 0 0 0;
+    }
+
+    h2{
+        font-size: 1.6rem;
+        padding: 0 0 0.4rem 0;
+        color: yellow;
+    }
+
+    h3{
+        color: rgb(251, 251, 82);
+        font-size: 1.45rem;
+        padding: 0.9rem 1rem;
+        text-align: center;
+        word-wrap: normal;
+    }
+
+    p{
+        padding: 0.5rem 0;
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        height: auto;
+        max-width: 150px;
+    }
+
+    footer{
+        font-size: 0.5rem;
+        margin: 1rem;
+        color: white;
     }
 
     .collums-pics{
@@ -33,42 +73,74 @@
     .rows-pics{
         display: flex;
         flex-direction: row;
-        padding: 1.5em 0;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 1rem;
         gap: 1rem;
-    }
-
-    h1{
-        font-family: var(--tittle-font);
-        font-size: 3.2rem;
-        color: white;
-        padding: 2rem 0 0 0;
-    }
-
-    h2{
-        font-size: 1.2rem;
-        padding: 0 0 0.4rem 0;
-        color: yellow;
+        max-width: 65%;
+        height: auto;
     }
 
     .first-txtbox{
         color: yellow;
-        font-size: 1.18rem;
-        padding: 0.5rem 2.3rem;
+        font-size: 1.2rem;
+        padding: 0.7rem 2rem;
+        text-align: justify;
+        hyphens: auto;
     }
 
     .second-txtbox{
         color: white;
-        font-size: 1rem;
-        padding: 0.5rem 2.3rem;
+        font-size: 1.05rem;
+        padding: 0.7rem 2rem;
+        text-align: justify;
+        hyphens: auto;
     }
 
     .banner{
         padding: 0.8rem 0;
-        width: 80%;
+        width: 90%;
+        height: auto;
     }
 
     .donate-btn{
-        width: 40%;
+        padding: 0.8rem 0;
+        width: 100%;
+        height: auto;
+    }
+    
+    .visitors{
+        background-color: black;
+        margin: 1rem 0 0 0;
+        width: 20rem;
+        height: 10rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .visitors h2{
+        color: white;
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .visitors p{
+        color: rgb(251, 251, 82);
+        font-size: 0.9rem;
+        margin: 0.1rem 0;
+    }
+    
+    .footer-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+    }
+    
+    .footer-div p {
+        display: flex;
+        align-items: center;
     }
 }
 
@@ -82,6 +154,33 @@
         background-image: url("https://github.com/21jujubees/SaveWalterWhite/blob/main/img/tile.png?raw=true");
     }
     
+    h1{
+        font-family: var(--tittle-font);
+        font-size: 6rem;
+        color: white;
+        padding: 2rem 0 0 0;
+    }
+
+    h2{
+        font-size: 2rem;
+        padding: 0 0 0.4rem 0;
+        color: yellow;
+    }
+
+    h3{
+        color: rgb(251, 251, 82);
+        font-size: 2rem;
+        padding: 0.9rem 12rem;
+        text-align: center;
+        word-wrap: normal;
+    }
+
+    footer{
+        margin: 1rem;
+        color: white;
+        gap: 0.5rem;
+    }
+
     .collums-pics{
         display: flex;
         flex-direction: column;
@@ -96,19 +195,6 @@
         gap: 4rem;
     }
 
-    h1{
-        font-family: var(--tittle-font);
-        font-size: 6rem;
-        color: white;
-        padding: 2rem 0 0 0;
-    }
-
-    h2{
-        font-size: 2rem;
-        padding: 0 0 0.4rem 0;
-        color: yellow;
-    }
-
     .body-text{
         padding: 0.5rem 0;
     }
@@ -116,51 +202,53 @@
     .first-txtbox{
         color: yellow;
         font-size: 1.7rem;
-        padding: 0.5rem 12rem;
+        padding: 0.5rem 13rem;
+        text-align: justify;
+        hyphens: auto;
     }
 
     .second-txtbox{
         color: white;
         font-size: 1.3rem;
-        padding: 0.5rem 12rem;
+        padding: 0.5rem 13rem;
+        text-align: justify;
+        hyphens: auto;
     }
-}
 
-h3{
-    color: rgb(251, 251, 82);
-    font-size: 2rem;
-    padding: 0.9rem 12rem;
-    text-align: center;
-    word-wrap: normal;
-}
+    .banner{
+        margin: 1.4rem;
+    }
+    
+    .donate-btn{
+        margin: 1.4rem;
+    }
+    
+    .visitors{
+        background-color: black;
+        margin: 1rem 0 0 0;
+        width: 65%;
+        height: 15rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0.5rem 0 0.5rem;
+    }
 
-.footer-div{
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-}
+    .visitors h2{
+        color: white;
+        font-size: 2rem;
+    }
+    
+    .visitors p{
+        color: rgb(251, 251, 82);
+        font-size: 1.7rem;
+        margin: 0.4rem 0;
+    }
 
-footer{
-    margin: 1rem;
-    color: white;
-    gap: 0.5rem;
-}
-
-.banner{
-    margin: 1.4rem;
-}
-
-.donate-btn{
-    margin: 1.4rem;
-}
-
-.visitors{
-    background-color: black;
-    margin: 1rem 0 0 0;
-    width: 65%;
-    height: 11rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    .footer-div{
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
 }
