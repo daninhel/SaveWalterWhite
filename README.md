@@ -8,5 +8,3 @@ A finalidade do projeto é apenas para praticar alguns conceitos que aprendi de 
 + Javascript
 + CSS
 + HTML
-
-Pretendo faze uma parte em Node.js , o feito na série pussiu um contador de visitas, irei tentar replicar esse contador, também é preciso desenvolve melhor para telas pequenas.
