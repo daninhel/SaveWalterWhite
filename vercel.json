@@ -2,18 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/contador.js",
+      "src": "server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/contador",
-      "dest": "/api/contador.js"
+      "dest": "/server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/public/index.html"
+      "dest": "/server.js"
     }
   ]
 }
+
