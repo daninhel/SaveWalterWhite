@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const { Pool } = require('pg');
 
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Configurar a pool de conexões com o Neon
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://visitas_owner:G4DPIcNOl0uH@ep-wispy-rain-a5gddatb.us-east-2.aws.neon.tech/visitas?sslmode=require',
   ssl: {
@@ -9,19 +13,11 @@ const pool = new Pool({
   },
 });
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Serve arquivos estáticos
+// Serve arquivos estáticos da pasta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Força a servir o index.html se a rota for "/"
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
 // Rota para atualizar o contador
-app.get('/api/contador', async (req, res) => {
+app.get('/api/atualizar-contador', async (req, res) => {
   try {
     const result = await pool.query(`
       UPDATE contador
@@ -36,8 +32,12 @@ app.get('/api/contador', async (req, res) => {
   }
 });
 
+// Rota principal para servir o index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Inicia o servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
- 
