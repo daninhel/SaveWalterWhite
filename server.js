@@ -17,7 +17,7 @@ const pool = new Pool({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Rota para atualizar o contador
-app.get('/api/atualizar-contador', async (req, res) => {
+app.get('/api/contador', async (req, res) => {
   try {
     const result = await pool.query(`
       UPDATE contador
