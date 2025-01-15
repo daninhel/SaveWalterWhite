@@ -1,8 +1,8 @@
 const { Pool } = require('pg');
 
-// Configurar a pool de conexões com o Neon
+// Usando a variável de ambiente DATABASE_URL
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://visitas_owner:G4DPIcNOl0uH@ep-wispy-rain-a5gddatb.us-east-2.aws.neon.tech/visitas?sslmode=require',
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },
