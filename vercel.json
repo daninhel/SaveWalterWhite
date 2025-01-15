@@ -4,16 +4,20 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "api/contador.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/contador",
-      "dest": "/contador.js"
+      "dest": "/api/contador.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/server.js"
+      "dest": "/public/index.html"
     }
   ]
 }
