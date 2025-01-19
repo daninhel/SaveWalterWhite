@@ -1,18 +1,15 @@
 {
   "name": "walter-white",
   "version": "1.0.0",
-  "description": "",
+  "description": "Contador de visitas usando Node.js e PostgreSQL",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2",
-    "pg": "^8.13.1",
-    "sqlite3": "^5.1.7"
+    "pg": "^8.13.1"
   }
 }
