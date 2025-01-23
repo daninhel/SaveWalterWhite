@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 
-// Configurar a pool de conexões com o Neon
+// Usando a variável de ambiente DATABASE_URL
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
