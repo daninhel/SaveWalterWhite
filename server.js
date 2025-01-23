@@ -4,7 +4,6 @@ const { Pool } = require('pg');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Configurar a pool de conexões com o Neon
 const pool = new Pool({
@@ -35,23 +34,5 @@ app.get('/', async (req, res) => {
   }
 });
 
-// Rota para atualizar o contador separadamente (caso precise)
-app.get('/api/contador', async (req, res) => {
-  try {
-    const result = await pool.query(`
-      UPDATE contador
-      SET visitas = visitas + 1
-      WHERE id = 1
-      RETURNING visitas;
-    `);
-    res.json({ visitas: result.rows[0].visitas });
-  } catch (error) {
-    console.error('Erro ao atualizar o contador:', error);
-    res.status(500).send('Erro ao atualizar o contador.');
-  }
-});
-
-// Inicia o servidor
-app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
+// Exporta o app para ser usado no Vercel
+module.exports = app;

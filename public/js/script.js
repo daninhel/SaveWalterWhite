@@ -1,6 +1,6 @@
 async function atualizarContador() {
   try {
-    const response = await fetch('/api/contador');
+    const response = await fetch('/api/contador'); // Ajuste se necessário para URL completa
     if (!response.ok) throw new Error('Erro na requisição');
 
     const data = await response.json();

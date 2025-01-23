@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 
-// Usando a variável de ambiente DATABASE_URL
+// Configurar a pool de conexões com o Neon
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -8,6 +8,7 @@ const pool = new Pool({
   },
 });
 
+// Função exportada para Vercel
 module.exports = async (req, res) => {
   try {
     const result = await pool.query(`
@@ -22,4 +23,3 @@ module.exports = async (req, res) => {
     res.status(500).send('Erro ao atualizar o contador');
   }
 };
-
