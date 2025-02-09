@@ -7,7 +7,18 @@ async function atualizarContador() {
 
     try {
         console.log('Iniciando requisição para a API...');
-        const response = await fetch('/api');
+        // Usa a URL completa em produção ou relativa em desenvolvimento
+        const apiUrl = window.location.hostname.includes('vercel.app') 
+            ? `${window.location.origin}/api` 
+            : '/api';
+            
+        console.log('Fazendo requisição para:', apiUrl);
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

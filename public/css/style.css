@@ -1,255 +1,318 @@
 /* definição de variaveis */
 :root{
-    --font : 'Comic Sans MS';
-    --tittle-font : 'Times New Roman';
-    --background : url("./img/background.webp")
+    --font: 'Comic Sans MS';
+    --title-font: 'Times New Roman';
+    --yellow-color: rgb(251, 251, 82);
+    --background: url("./img/background.webp");
 }
+
 /* redefinindo configurações do css */
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
 /* dispositivos moveis */
 @media (max-width: 800px) {
-    body{
+    body {
         font-family: var(--font);
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-image:var(--background);
-        background-size: auto;
+        background-image: var(--background);
+        background-size: cover;
+        background-attachment: fixed;
+        min-height: 100vh;
+        padding: 1rem;
     }
     
-    img{
-        width: 40%;
-        height: 40%;
+    img {
+        max-width: 100%;
+        height: auto;
     }
 
-    h1{
-        font-family: var(--tittle-font);
+    h1 {
+        font-family: var(--title-font);
         font-size: 3.5rem;
         color: white;
         text-align: center;
-        padding: 2rem 0 0 0;
+        padding: 2rem 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    h2{
+    h2 {
         color: yellow;
         font-size: 1.6rem;
         text-align: center;
-        padding: 0 0 0.4rem 0;
-    }
-
-    h3{
-        color: rgb(251, 251, 82);
-        font-size: 1.45rem;
-        padding: 0.9rem 1rem;
-        text-align: center;
-        word-wrap: normal;
-    }
-
-    p{
         padding: 0.5rem 0;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
 
-    a {
-        display: flex;
-        justify-content: center;
-        text-decoration: none;
-        height: auto;
-        max-width: 150px;
+    h3 {
+        color: var(--yellow-color);
+        font-size: 1.45rem;
+        padding: 1rem;
+        text-align: center;
+        max-width: 90%;
+        margin: 0 auto;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
 
-    footer{
-        font-size: 0.5rem;
-        margin: 1rem;
-        color: white;
-    }
-
-    .collums-pics{
+    .collums-pics {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        gap: 1rem;
+        width: 100%;
+        padding: 1rem 0;
     }
     
-    .rows-pics{
+    .rows-pics {
         display: flex;
-        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
-        padding: 1rem 1rem;
         gap: 1rem;
-        max-width: 65%;
-        height: auto;
+        padding: 1rem;
+        width: 100%;
     }
 
-    .first-txtbox{
+    .rows-pics img {
+        width: calc(33.33% - 1rem);
+        object-fit: cover;
+    }
+
+    .first-txtbox,
+    .second-txtbox {
+        width: 90%;
+        margin: 1rem auto;
+        padding: 1rem;
+        text-align: center;
+        line-height: 1.6;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+
+    .first-txtbox {
         color: yellow;
         font-size: 1.2rem;
-        padding: 0.7rem 2rem;
-        text-align: justify;
-        hyphens: auto;
     }
 
-    .second-txtbox{
+    .second-txtbox {
         color: white;
         font-size: 1.05rem;
-        padding: 0.7rem 2rem;
-        text-align: justify;
-        hyphens: auto;
     }
 
-    .banner{
-        padding: 0.8rem 0;
+    .visitors {
+        background-color: rgba(0, 0, 0, 0.8);
         width: 90%;
-        height: auto;
+        padding: 2rem;
+        margin: 2rem auto;
+        border-radius: 10px;
+        text-align: center;
+
+        & h2 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        & p {
+            color: var(--yellow-color);
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
     }
 
-    .donate-btn{
-        padding: 0.8rem 0;
-        width: 100%;
-        height: auto;
+    #contador {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--yellow-color);
     }
-    
-    .visitors{
-        background-color: black;
-        width: 20rem;
-        height: 8rem;
+
+    .banner {
+        width: 90%;
+        max-width: 600px;
+        margin: 2rem auto;
+        display: block;
+    }
+
+    .donate-btn {
+        width: 80%;
+        max-width: 400px;
+        margin: 1rem auto;
+        display: block;
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    footer {
+        width: 100%;
+        padding: 2rem 1rem;
+        color: white;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin-top: auto;
+    }
+
+    .footer-div {
         display: flex;
         flex-direction: column;
         align-items: center;
-
-        & h2{
-            color: white;
-            font-size: 1rem;
-            text-align: center;
-        }
-        
-        & p{
-            color: rgb(251, 251, 82);
-            font-size: 1rem;
-        }
-    }
-    
-    .footer-div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 4rem;
+        gap: 1rem;
+        margin-bottom: 1rem;
 
         & p {
-            display: flex;
-            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        & a {
+            color: var(--yellow-color);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
+
 /* telas grandes, tablets e computadores */
 @media (min-width: 800px) {
-    body{
+    body {
         font-family: var(--font);
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        min-height: 100vh;
         background-image: url("https://github.com/21jujubees/SaveWalterWhite/blob/main/img/tile.png?raw=true");
+        background-attachment: fixed;
+        padding: 2rem;
     }
-    
-    h1{
-        font-family: var(--tittle-font);
+
+    h1 {
+        font-family: var(--title-font);
         font-size: 6rem;
         color: white;
-        padding: 2rem 0 0 0;
-    }
-
-    h2{
-        font-size: 2rem;
-        padding: 0 0 0.4rem 0;
-        color: yellow;
-    }
-
-    h3{
-        color: rgb(251, 251, 82);
-        font-size: 2rem;
-        padding: 0.9rem 12rem;
         text-align: center;
-        word-wrap: normal;
+        padding: 2rem 0;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
     }
 
-    footer{
-        margin: 1rem;
-        color: white;
-        gap: 0.5rem;
+    h2 {
+        font-size: 2.5rem;
+        color: yellow;
+        text-align: center;
+        padding: 1rem 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    .collums-pics{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .rows-pics{
-        display: flex;
-        flex-direction: row;
-        padding: 1.5em 0;
-        gap: 4rem;
+    h3 {
+        color: var(--yellow-color);
+        font-size: 2rem;
+        max-width: 80%;
+        margin: 1rem auto;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    .body-text{
-        padding: 0.5rem 0;
+    .first-txtbox,
+    .second-txtbox {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+        text-align: center;
+        line-height: 1.8;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
     }
 
-    .first-txtbox{
+    .first-txtbox {
         color: yellow;
         font-size: 1.7rem;
-        padding: 0.5rem 13rem;
-        text-align: justify;
-        hyphens: auto;
     }
 
-    .second-txtbox{
+    .second-txtbox {
         color: white;
-        font-size: 1.3rem;
-        padding: 0.5rem 13rem;
-        text-align: justify;
-        hyphens: auto;
+        font-size: 1.5rem;
     }
 
-    .banner{
-        margin: 1.4rem;
-    }
-    
-    .donate-btn{
-        margin: 1.4rem;
-    }
-    
-    .visitors{
-        background-color: black;
-        margin: 1rem 0 0 0;
-        width: 65%;
-        height: 15rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5rem 0.5rem 0 0.5rem;
+    .visitors {
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 80%;
+        max-width: 800px;
+        padding: 3rem;
+        margin: 3rem auto;
+        border-radius: 15px;
+        text-align: center;
 
-        & h2{
+        & h2 {
             color: white;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
         }
         
-        & p{
-            color: rgb(251, 251, 82);
-            font-size: 1.7rem;
-            margin: 0.4rem 0;
+        & p {
+            color: var(--yellow-color);
+            font-size: 2rem;
+            margin: 1rem 0;
         }
     }
 
-    .footer-div{
-        justify-content: center;
+    #contador {
+        font-size: 3rem;
+        font-weight: bold;
+        color: var(--yellow-color);
+    }
+
+    .banner {
+        width: 80%;
+        max-width: 1000px;
+        margin: 3rem auto;
+        display: block;
+    }
+
+    .donate-btn {
+        width: 60%;
+        max-width: 500px;
+        margin: 2rem auto;
+        display: block;
+        transition: transform 0.3s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    footer {
+        width: 100%;
+        padding: 3rem;
+        color: white;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        margin-top: auto;
+    }
+
+    .footer-div {
         display: flex;
-        flex-direction: row;
-        gap: 2rem;
+        justify-content: center;
+        gap: 3rem;
+        margin-bottom: 1.5rem;
+
+        & p {
+            font-size: 1.2rem;
+        }
+
+        & a {
+            color: var(--yellow-color);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }

@@ -4,12 +4,19 @@ const cors = require('cors');
 
 const app = express();
 
-// Configurar CORS
+// Configurar CORS para aceitar requisições do domínio do Vercel
 app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type']
+  origin: ['https://save-walter-white-five.vercel.app', 'http://localhost:3000'],
+  methods: ['GET', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Accept'],
+  credentials: true
 }));
+
+// Middleware para logging
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path} - Origin: ${req.headers.origin}`);
+  next();
+});
 
 // Configurar a pool de conexões com o PostgreSQL
 const pool = new Pool({
@@ -19,20 +26,18 @@ const pool = new Pool({
   }
 });
 
-// Middleware para logging
-app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
-  next();
-});
-
 // Middleware
 app.use(express.json());
 
 // Handler para a rota principal
 const handler = async (req, res) => {
-  const client = await pool.connect();
+  console.log('Iniciando handler da API');
+  let client;
   
   try {
+    client = await pool.connect();
+    console.log('Conectado ao banco de dados');
+
     // Criar tabela se não existir
     await client.query(`
       CREATE TABLE IF NOT EXISTS contador (
@@ -40,6 +45,7 @@ const handler = async (req, res) => {
         visitas INTEGER DEFAULT 0
       );
     `);
+    console.log('Tabela verificada/criada');
 
     // Inserir registro inicial se não existir
     await client.query(`
@@ -47,6 +53,7 @@ const handler = async (req, res) => {
       VALUES (1, 0)
       ON CONFLICT (id) DO NOTHING;
     `);
+    console.log('Registro inicial verificado');
 
     // Atualizar contador
     const result = await client.query(`
@@ -56,20 +63,43 @@ const handler = async (req, res) => {
       RETURNING visitas;
     `);
     
-    // Log para debug
-    console.log('Visitas atualizadas:', result.rows[0]);
+    console.log('Contador atualizado:', result.rows[0]);
     
+    // Configurar headers de cache
+    res.set({
+      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+      'Surrogate-Control': 'no-store'
+    });
+
     res.json({ visitas: result.rows[0].visitas });
   } catch (error) {
-    console.error('Erro:', error);
-    res.status(500).json({ error: 'Erro interno do servidor', details: error.message });
+    console.error('Erro no handler:', error);
+    res.status(500).json({ 
+      error: 'Erro interno do servidor', 
+      message: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
   } finally {
-    client.release();
+    if (client) {
+      console.log('Liberando conexão com o banco');
+      client.release();
+    }
   }
 };
 
 // Rota principal
 app.get('/api', handler);
+
+// Rota de teste/health check
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    env: process.env.NODE_ENV || 'development'
+  });
+});
 
 // Rota de teste
 app.get('/api/test', (req, res) => {
@@ -79,7 +109,11 @@ app.get('/api/test', (req, res) => {
 // Handler de erro global
 app.use((err, req, res, next) => {
   console.error('Erro não tratado:', err);
-  res.status(500).json({ error: 'Erro interno do servidor', details: err.message });
+  res.status(500).json({ 
+    error: 'Erro interno do servidor', 
+    message: err.message,
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+  });
 });
 
 // Exporta o handler para uso com Vercel

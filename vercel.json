@@ -12,7 +12,11 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/api/health",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/api",
       "dest": "/api/index.js"
     },
     {
@@ -29,8 +33,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/public/$1",
-      "continue": true
+      "dest": "/public/$1"
     }
   ]
 }
