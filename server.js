@@ -5,7 +5,6 @@ const { Pool } = require('pg');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Configurar a pool de conexões com o PostgreSQL
 const pool = new Pool({
@@ -20,14 +19,11 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-// Verificar conexão com o banco
-pool.connect((err) => {
-  if (err) {
-    console.error('Erro ao conectar ao banco:', err);
-  } else {
-    console.log('Conectado ao PostgreSQL');
-    // Criar tabela se não existir
-    pool.query(`
+// Inicializar banco de dados
+async function initializeDatabase() {
+  try {
+    const client = await pool.connect();
+    await client.query(`
       CREATE TABLE IF NOT EXISTS contador (
         id SERIAL PRIMARY KEY,
         visitas INTEGER DEFAULT 0
@@ -35,9 +31,18 @@ pool.connect((err) => {
       INSERT INTO contador (id, visitas)
       VALUES (1, 0)
       ON CONFLICT (id) DO NOTHING;
-    `).catch(err => console.error('Erro ao criar tabela:', err));
+    `);
+    client.release();
+    console.log('Banco de dados inicializado com sucesso');
+  } catch (err) {
+    console.error('Erro ao inicializar banco:', err);
   }
-});
+}
+
+// Inicializa o banco se estivermos em ambiente de produção
+if (process.env.NODE_ENV === 'production') {
+  initializeDatabase();
+}
 
 // Rota para a página inicial
 app.get('/', (req, res) => {
@@ -47,13 +52,15 @@ app.get('/', (req, res) => {
 // Rota para obter contagem atual
 app.get('/api/contador', async (req, res) => {
   try {
+    const client = await pool.connect();
     // Atualiza o contador no banco de dados
-    const result = await pool.query(`
+    const result = await client.query(`
       UPDATE contador
       SET visitas = visitas + 1
       WHERE id = 1
       RETURNING visitas;
     `);
+    client.release();
     
     res.json({ visitas: result.rows[0].visitas });
   } catch (error) {
@@ -68,7 +75,5 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Algo deu errado!' });
 });
 
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+// Exporta o app para ser usado no Vercel
+module.exports = app;

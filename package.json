@@ -4,8 +4,9 @@
   "description": "Contador de visitas usando Node.js e PostgreSQL",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node local.js",
+    "dev": "nodemon local.js",
+    "vercel-build": "echo 'Build step completed'"
   },
   "author": "",
   "license": "ISC",
