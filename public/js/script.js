@@ -19,7 +19,7 @@ async function atualizarContador() {
         }
     } catch (error) {
         console.error('Erro ao atualizar contador:', error);
-        contadorElement.textContent = 'Erro ao carregar';
+        contadorElement.textContent = '';
     }
 }
 

@@ -1,11 +1,16 @@
 const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 // Configuração básica do CORS
 app.use(cors());
+
+// Servir arquivos estáticos
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Configuração do PostgreSQL
 const pool = new Pool({
@@ -56,9 +61,19 @@ app.get('/api', async (req, res) => {
     }
 });
 
+// Rota para a página inicial
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
 // Rota de teste
 app.get('/api/test', (req, res) => {
     res.json({ status: 'OK' });
+});
+
+// Iniciar o servidor
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
 });
 
 module.exports = app;
